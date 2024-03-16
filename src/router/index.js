@@ -14,23 +14,28 @@ const router = createRouter({
                     component: () => import('@/views/Services.vue')
                 },
                 {
-                    path: '/new',
+                    path: '/new/:service',
                     name: 'NewRequest',
                     component: () => import('@/views/request/New.vue'),
                     children: [
                         {
-                            path: '/new',
+                            path: '/new/:service',
                             component: () => import('@/views/request/Information.vue')
                         },
                         {
-                            path: '/new/payment',
+                            path: '/new/:service/payment',
                             component: () => import('@/views/request/Payment.vue')
                         },
                         {
-                            path: '/new/confirm',
+                            path: '/new/:service/confirm',
                             component: () => import('@/views/request/Confirm.vue')
                         },
                     ]
+                },
+                {
+                    path: '/orders',
+                    name: 'orders',
+                    component: () => import('@/views/Orders.vue')
                 },
                 {
                     path: '/uikit/formlayout',
@@ -174,7 +179,7 @@ const router = createRouter({
         },
 
         {
-            path: '/auth/login',
+            path: '/login',
             name: 'login',
             component: () => import('@/views/pages/auth/Login.vue')
         },

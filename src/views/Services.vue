@@ -30,7 +30,9 @@
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
-                    <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    <router-link :to="'/new/service'">
+                        <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -61,7 +63,9 @@
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
-                    <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    <router-link :to="'/new/service2'">
+                        <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -92,7 +96,9 @@
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
-                    <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    <router-link :to="'/new/service3'">
+                        <Button label="Request Now" class="p-3 w-full mt-auto"></Button>
+                    </router-link>
                 </div>
             </div>
         </div>

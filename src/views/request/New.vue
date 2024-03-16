@@ -16,29 +16,39 @@
 <Steps class="mb-4" v-model:activeStep="activeStep" :model="stepsRoutes" />
 
 <div class="card p-fluid">
-  <router-view @kk="logit" />
+  <router-view @next="next" />
 </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import router from '@/router'
 
+console.log(router.currentRoute.value.params.service)
 const activeStep = ref(0)
 
-const logit = () => console.log('kkkkk')
+function next() {
+  activeStep.value = 1
+  router.push('/new/service/payment')
+
+  setTimeout(() => {
+    activeStep.value = 2
+    router.push('/new/service/confirm')
+  }, 10000)
+}
 
 const stepsRoutes = ref([
   {
     label: 'Information',
-    to: '/new'
+    // to: '/new'
   },
   {
     label: 'Payment',
-    to: '/new/payment'
+    // to: '/new/payment'
   },
   {
     label: 'Confirmation',
-    to: '/new/confirm'
+    // to: '/new/confirm'
   }
 ]);
 </script>

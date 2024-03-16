@@ -13,7 +13,20 @@
     <label>Birthdate</label>
     <Calendar :showIcon="true" :showButtonBar="true" v-model="birthdate"></Calendar>
   </div>
-  <Button @click="$emit('kk')" label="Submit" class="w-2"></Button>
+
+  <p>Upload the following docuemnts:</p>
+  <ul>
+    <li>Document</li>
+    <li>Document</li>
+    <li>Document</li>
+    <li>Document</li>
+  </ul>
+  <FileUpload :showUploadButton="false" name="demo[]"  url="/api/upload" @upload="onAdvancedUpload($event)" :multiple="true" accept="image/*, .pdf" :fileLimit="3" :maxFileSize="1000000">
+    <template #empty>
+      <p>Drag and drop files to here to upload.</p>
+    </template>
+  </FileUpload>
+  <Button @click="$emit('next')" label="Submit" class="mt-2 w-2"></Button>
 </div>
 </template>
 

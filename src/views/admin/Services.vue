@@ -13,7 +13,8 @@ const deleteDialog = ref(false);
 const deleteProductsDialog = ref(false);
 const service = reactive({
     conditions: [''],
-    documents: ['']
+    documents: [''],
+    inputs: ['']
 });
 const dt = ref(null);
 const filters = ref({});
@@ -45,6 +46,7 @@ const openNew = () => {
     service.description = ''
     service.conditions = ['']
     service.documents = ['']
+    service.inputs = ['']
     serviceDialog.value = true;
 };
 
@@ -73,17 +75,18 @@ const editService = (editService) => {
     service.fee = editService.fee+0
     service.conditions = [...editService.conditions]
     service.documents = [...editService.documents]
+    service.inputs = [...editService.inputs]
     serviceDialog.value = true;
 };
 
 const confirmDelete = (editService) => {
-    service.value = editService;
+    service.id = editService.id;
     deleteDialog.value = true;
 };
 
 const deleteService = async () => {
-    await axios.delete('admin/users/' + service.value.id)
-    services.value = services.value.filter((val) => val.id !== service.value.id);
+    await axios.delete('services/' + service.id)
+    services.value = services.value.filter((val) => val.id !== service.id);
     deleteDialog.value = false;
     service.value = {};
     toast.add({ severity: 'success', summary: 'تم', detail: 'تم الحذف', life: 3000 });
@@ -145,9 +148,9 @@ const initFilters = () => {
                     </Column>
                     <Column headerStyle="min-width:10rem;">
                         <template #body="slotProps">
-                            <router-link :to="'/service/' + slotProps.data.id">
+                            <!-- <router-link :to="'/service/' + slotProps.data.id">
                                 <Button icon="pi pi-eye" class="" severity="info" rounded />
-                            </router-link>
+                            </router-link> -->
                             <Button icon="pi pi-pencil" class="mr-2" severity="success" rounded
                                 @click="editService(slotProps.data)" />
                             <Button icon="pi pi-trash" class="mr-2" severity="warning" rounded
@@ -202,6 +205,14 @@ const initFilters = () => {
                                 <InputText v-model="service.conditions[i]" />
                             </div>
                             <Button icon="pi pi-plus" @click="service.conditions.push('')" />
+                        </div>
+
+                        <div class="mt-2">
+                            <label><strong>البيانات المطلوبة</strong></label>
+                            <div class="field" v-for="(con, i, x) in service.inputs" :key="i">
+                                <InputText v-model="service.inputs[i]" />
+                            </div>
+                            <Button icon="pi pi-plus" @click="service.inputs.push('')" />
                         </div>
 
                         <div class="mt-2">

@@ -8,6 +8,7 @@ const authStore = useAuthStore()
 const model = ref([
     {
         items: [
+            { label: 'الرئيسية', icon: 'pi pi-fw pi-home', to: '/' },
             { label: 'الخدمات', icon: 'pi pi-fw pi-file', to: '/services' },
             { label: 'طلباتي', icon: 'pi pi-fw pi-clone', to: '/orders' },
         ]

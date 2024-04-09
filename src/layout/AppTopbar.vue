@@ -78,8 +78,8 @@ function logout() {
 <template>
     <div class="layout-topbar">
         <router-link to="/" class="layout-topbar-logo">
-            <img :src="logoUrl" alt="logo" />
-            <span>LOGO</span>
+            <!-- <img :src="logoUrl" alt="logo" /> -->
+            <span>المعقب الإلكتروني</span>
         </router-link>
 
         <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">

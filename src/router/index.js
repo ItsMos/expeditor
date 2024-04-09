@@ -230,7 +230,7 @@ router.beforeEach((to, from, next) => {
     } else if (to.meta.requireGuest && authStore.user) {
       next({ name: 'home' })
     
-    } else if (to.meta.admin && !authStore.user.admin) {
+    } else if (to.meta.admin && !authStore.user?.admin) {
       next({ name: 'home' })
 
     } else {

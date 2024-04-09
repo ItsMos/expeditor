@@ -1,7 +1,7 @@
 <script setup>
 import { useLayout } from '@/layout/composables/layout';
 import { ref, computed } from 'vue';
-import AppConfig from '@/layout/AppConfig.vue';
+// import AppConfig from '@/layout/AppConfig.vue';
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import axios from '@/axios'
 import { useAuthStore } from '@/stores/auth'
@@ -84,7 +84,7 @@ async function login() {
     </div>
   </div>
   <Toast />
-  <AppConfig simple />
+  <!-- <AppConfig simple /> -->
 </template>
 
 <style scoped>

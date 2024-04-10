@@ -73,6 +73,7 @@ async function login() {
 
             <div class="flex align-items-center justify-content-between mb-5 gap-5">
               <div class="flex align-items-center">
+              <router-link to="/register">حساب جديد</router-link>
                 <!-- <Checkbox v-model="checked" id="rememberme1" binary class="mr-2"></Checkbox>
                                 <label for="rememberme1">Remember me</label> -->
               </div>

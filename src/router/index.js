@@ -13,6 +13,11 @@ const router = createRouter({
             component: AppLayout,
             children: [
                 {
+                    path: '/',
+                    name: 'home',
+                    component: () => import('@/views/Home.vue')
+                },
+                {
                     path: '/services',
                     name: 'services',
                     component: () => import('@/views/Services.vue')
@@ -56,13 +61,18 @@ const router = createRouter({
                             path: '/admin/services',
                             name: 'ManageServices',
                             component: () => import('@/views/admin/Services.vue')
+                        },
+                        {
+                            path: '/admin/orders',
+                            name: 'ManageOrders',
+                            component: () => import('@/views/admin/Orders.vue')
+                        },
+                        {
+                            path: '/admin/orders/:id',
+                            name: 'ReviewOrder',
+                            component: () => import('@/views/admin/ReviewOrder.vue')
                         }
                     ]
-                },
-                {
-                    path: '/',
-                    name: 'home',
-                    component: () => import('@/views/Dashboard.vue')
                 },
                 {
                     path: '/uikit/formlayout',

@@ -107,8 +107,7 @@ const initFilters = () => {
 </script>
 
 <template>
-    <div class="grid">
-        <div class="col-12">
+
             <div class="card">
                 <Toolbar class="mb-4">
                     <template v-slot:start>
@@ -216,7 +215,7 @@ const initFilters = () => {
                         </div>
 
                         <div class="mt-2">
-                            <label><strong>الأوراق المطلوبة</strong></label>
+                            <label><strong>المستندات المطلوبة</strong></label>
                             <div class="field" v-for="(con, i, x) in service.documents" :key="i">
                                 <InputText v-model="service.documents[i]" />
                             </div>
@@ -254,6 +253,4 @@ const initFilters = () => {
                     </template>
                 </Dialog>
             </div>
-        </div>
-    </div>
 </template>

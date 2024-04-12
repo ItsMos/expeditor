@@ -6,7 +6,7 @@ const router = Router()
 
 router.post('/api/services', auth, admin, async (req, res) => {
   let { title, description, fee, time, conditions, documents, inputs } = req.body
-  if ([title, description, fee, time].some(p => !p)) return res.sendStatus(400)
+  if ([title, description, fee, time].some(p => p == null)) return res.sendStatus(400)
 
   conditions = conditions.filter(c => !!c.trim())
   documents = documents.filter(c => !!c.trim())

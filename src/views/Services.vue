@@ -24,7 +24,8 @@ onMounted(async () => {
                     <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
                     <div class="flex align-items-center">
                         <i class="pi pi-money-bill ml-2"></i>
-                        <span class="font-bold text-2xl text-900">{{ service.fee }} ريال</span>
+                        <span v-if="service.fee" class="font-bold text-2xl text-900">{{ service.fee }} ريال</span>
+                        <span v-else class="font-bold text-2xl text-900">مجانًا</span>
                         <!-- <span class="ml-2 font-medium text-600">per month</span> -->
                     </div>
                     <hr class="my-3 mx-0 border-top-1 border-none surface-border" />

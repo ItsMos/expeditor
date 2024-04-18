@@ -10,6 +10,7 @@ const model = ref([
     items: [
       { label: 'الرئيسية', icon: 'pi pi-fw pi-home', to: '/' },
       { label: 'الخدمات', icon: 'pi pi-fw pi-file', to: '/services' },
+      { label: 'من نحن', icon: 'pi pi-fw pi-tag', to: '/about' },
     ]
   }
 ])
@@ -24,8 +25,8 @@ onMounted(() => {
     model.value.push({
       label: 'الإدارة',
       items: [
-        { label: 'الخدمات', icon: 'pi pi-fw pi-file', to: '/admin/services' },
-        { label: 'جميع الطلبات', icon: 'pi pi-fw pi-file', to: '/admin/orders' },
+        { label: 'الخدمات', icon: 'pi pi-fw pi-wrench', to: '/admin/services' },
+        { label: 'جميع الطلبات', icon: 'pi pi-fw pi-copy', to: '/admin/orders' },
       ]
     })
   }

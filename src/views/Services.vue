@@ -33,7 +33,7 @@ onMounted(async () => {
                         <i class="pi pi-clock ml-2"></i>
                         وقت التنفيذ: {{ service.time }}
                     </h6>
-                    <router-link :to="'/new/'+service.id">
+                    <router-link :to="'/new/'+service.id" style="margin-top: auto">
                         <Button label="اطلب الآن" class="p-3 w-full mt-auto"></Button>
                     </router-link>
                 </div>

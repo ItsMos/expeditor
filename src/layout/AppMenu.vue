@@ -10,12 +10,16 @@ const model = ref([
     items: [
       { label: 'الرئيسية', icon: 'pi pi-fw pi-home', to: '/' },
       { label: 'الخدمات', icon: 'pi pi-fw pi-file', to: '/services' },
-      { label: 'طلباتي', icon: 'pi pi-fw pi-clone', to: '/orders' },
     ]
   }
 ])
 
 onMounted(() => {
+  if (authStore?.user) {
+    model.value[0].items.push(
+      { label: 'طلباتي', icon: 'pi pi-fw pi-clone', to: '/orders' }
+    )
+  }
   if (authStore?.user?.admin) {
     model.value.push({
       label: 'الإدارة',

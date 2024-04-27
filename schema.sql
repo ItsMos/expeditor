@@ -19,6 +19,20 @@
 CREATE DATABASE IF NOT EXISTS `expeditor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `expeditor`;
 
+-- Dumping structure for table expeditor.messages
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL DEFAULT '0',
+  `order_no` varchar(255) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `seen` int DEFAULT (0),
+  `created_at` timestamp NULL DEFAULT (now()),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Data exporting was unselected.
+
 -- Dumping structure for table expeditor.orders
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -27,10 +41,11 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `status` int DEFAULT (0),
   `inputs` json DEFAULT (_utf8mb4'[]'),
   `documents` json DEFAULT (_utf8mb4'[]'),
+  `result_file` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT (now()),
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -44,9 +59,10 @@ CREATE TABLE IF NOT EXISTS `services` (
   `conditions` json DEFAULT (_utf8mb4'[]'),
   `documents` json DEFAULT (_utf8mb4'[]'),
   `inputs` json DEFAULT (_utf8mb4'[]'),
+  `api` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 

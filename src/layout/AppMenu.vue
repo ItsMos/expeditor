@@ -18,7 +18,8 @@ const model = ref([
 onMounted(() => {
   if (authStore?.user) {
     model.value[0].items.push(
-      { label: 'طلباتي', icon: 'pi pi-fw pi-clone', to: '/orders' }
+      { label: 'طلباتي', icon: 'pi pi-fw pi-clone', to: '/orders' },
+      { label: 'الدعم', icon: 'pi pi-fw pi-send', to: '/help' }
     )
   }
   if (authStore?.user?.admin) {
@@ -27,6 +28,7 @@ onMounted(() => {
       items: [
         { label: 'الخدمات', icon: 'pi pi-fw pi-wrench', to: '/admin/services' },
         { label: 'جميع الطلبات', icon: 'pi pi-fw pi-copy', to: '/admin/orders' },
+        { label: 'الرسائل', icon: 'pi pi-fw pi-envelope', to: '/admin/messages' },
       ]
     })
   }

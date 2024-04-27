@@ -1,6 +1,7 @@
 <template>
   <div class="card">
-    <Message v-if="order.status === 1" :closable="false">تم إرسال الطلب للجهة المناسبة</Message>
+    <Message v-if="order.status === 0" :closable="false">طلبك قيد المراجعة</Message>
+    <Message v-if="order.status === 1" :closable="false">يتم العمل على طلبك</Message>
     <Message v-if="order.status === 2" :closable="false" severity="success">الطلب منتهي</Message>
     <Message v-if="order.status === 3" :closable="false" severity="error">الطلب مرفوض</Message>
     <div class="field grid">
@@ -60,11 +61,6 @@
         </div>
       </div>
     </template>
-
-    <div class="flex gap-2">
-      <Button @click="accept" v-if="order.status === 0" label="قبول الطلب"/>
-      <Button @click="deny" v-if="order.status === 0" severity="danger" label="رفض الطلب"/>
-    </div>
   </div>
 </template>
 
@@ -86,14 +82,4 @@ onMounted(async () => {
   service.value = data2
   order.value = data
 })
-
-async function accept() {
-  await axios.post('acceptOrder', { orderId: order.value.id })
-  order.value.status = 1
-}
-
-async function deny() {
-  await axios.post('denyOrder', { orderId: order.value.id })
-  order.value.status = 3 
-}
 </script>

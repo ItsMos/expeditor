@@ -40,6 +40,7 @@ async function onPage(event) {
 }
 
 const openNew = () => {
+    service.api = ''
     service.title = ''
     service.time = ''
     service.fee = null
@@ -69,6 +70,7 @@ const saveService = async () => {
 
 const editService = (editService) => {
     service.id = editService.id+0
+    service.api = editService.api+''
     service.title = editService.title+''
     service.description = editService.description+''
     service.time = editService.time+''
@@ -220,6 +222,14 @@ const initFilters = () => {
                                 <InputText v-model="service.documents[i]" />
                             </div>
                             <Button icon="pi pi-plus" @click="service.documents.push('')" />
+                        </div>
+
+                        <div class="field mt-2">
+                            <label for="api">API</label>
+                            <Field name="api" v-slot="{ field, meta }" v-model.trim="service.api">
+                                <InputText v-bind="field" id="api" autofocus :invalid="!meta.valid" />
+                            </Field>
+                            <ErrorMessage name="api" class="block" />
                         </div>
 
                         <Button type="submit" label="حفظ" icon="pi pi-check" text class="inline-block" />

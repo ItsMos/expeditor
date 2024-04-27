@@ -30,8 +30,10 @@
                 <div class="flex flex-column md:align-items-end gap-5">
                   <!-- <span class="text-xl font-semibold text-900">$2</span> -->
                   <div class="flex flex-row-reverse md:flex-row gap-2">
-                    <Button v-if="item.status == 2" label="عرض"
-                      class="flex-auto md:flex-initial white-space-nowrap"/>
+                    <router-link v-if="item.status == 2" :to="{ name: 'order', params: { id: item.id } }">
+                      <Button label="عرض"
+                        class="flex-auto md:flex-initial white-space-nowrap"/>
+                    </router-link>
                   </div>
                 </div>
               </div>

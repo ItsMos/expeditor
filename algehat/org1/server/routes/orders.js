@@ -20,7 +20,7 @@ router.get('/api/allOrders', auth, async (req, res) => {
   res.json(orders)
 })
 
-router.post('/api/order', async (req, res) => {
+router.post('/api', async (req, res) => {
   const { files } = req
   const {  note, user_name, external_id, reply_api } = req.body
 

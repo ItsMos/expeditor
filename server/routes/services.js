@@ -5,7 +5,7 @@ import db from "../db.js"
 const router = Router()
 
 router.post('/api/services', auth, admin, async (req, res) => {
-  let { title, description, fee, time, conditions, documents, inputs } = req.body
+  let { title, description, fee, time, conditions, documents, inputs, api } = req.body
   if ([title, description, fee, time].some(p => p == null)) return res.sendStatus(400)
 
   conditions = conditions.filter(c => !!c.trim())
@@ -17,6 +17,7 @@ router.post('/api/services', auth, admin, async (req, res) => {
     description,
     fee,
     time,
+    api,
     conditions: JSON.stringify(conditions),
     documents: JSON.stringify(documents),
     inputs: JSON.stringify(inputs)

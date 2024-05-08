@@ -29,11 +29,11 @@ router.post('/api/services', auth, admin, async (req, res) => {
 
 router.post('/api/services/:id', auth, admin, async (req, res) => {
   let { title, description, fee, time, conditions, documents, inputs, api } = req.body
-  if ([title, description, fee, time].some(p => !p)) return res.sendStatus(400)
+  if ([title, description, fee, time].some(p => p == null)) return res.sendStatus(400)
 
   conditions = conditions.filter(c => !!c.trim())
   documents = documents.filter(c => !!c.trim())
-  inputs = inputs.filter(c => !!c.trim())
+  inputs = inputs.filter(c => !!c.name.trim())
 
   await db.query(`update services set title=?, description=?, fee=?, time=?, conditions=?, documents=?, inputs=?, api=? where id = ?`, [title, description, fee, time,JSON.stringify(conditions),JSON.stringify(documents), JSON.stringify(inputs), api, req.params.id])
   res.end()

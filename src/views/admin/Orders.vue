@@ -15,7 +15,7 @@
                       {{ item.service.title }}
                       <small>رقم الطلب {{ item.id }}</small>
                     </div>
-                    <span class="font-medium text-secondary text-sm">{{ new Date(item.created_at).toLocaleDateString() }}</span>
+                    <span class="font-medium text-secondary text-sm">{{ new Date(item.created_at).toLocaleString() }}</span>
                   </div>
 
                   <div>

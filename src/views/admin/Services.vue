@@ -14,7 +14,7 @@ const deleteProductsDialog = ref(false);
 const service = reactive({
     conditions: [''],
     documents: [''],
-    inputs: ['']
+    inputs: [{ name: '', type: '' }]
 });
 const dt = ref(null);
 const filters = ref({});
@@ -47,7 +47,7 @@ const openNew = () => {
     service.description = ''
     service.conditions = ['']
     service.documents = ['']
-    service.inputs = ['']
+    service.inputs = [{ name: '', type: '' }]
     serviceDialog.value = true;
 };
 
@@ -210,10 +210,13 @@ const initFilters = () => {
 
                         <div class="mt-2">
                             <label><strong>البيانات المطلوبة</strong></label>
-                            <div class="field" v-for="(con, i, x) in service.inputs" :key="i">
-                                <InputText v-model="service.inputs[i]" />
-                            </div>
-                            <Button icon="pi pi-plus" @click="service.inputs.push('')" />
+                            <InputGroup v-for="(con, i, x) in service.inputs" :key="i">
+                                <InputText v-model="service.inputs[i].name" />
+                                <InputGroupAddon>
+                                    <Dropdown v-model="service.inputs[i].type" :options="['هاتف', 'تاريخ', 'نص']" placeholder="نوع الحقل" />
+                                </InputGroupAddon>
+                            </InputGroup>
+                            <Button icon="pi pi-plus" @click="service.inputs.push({ name: '', type: '' })" />
                         </div>
 
                         <div class="mt-2">

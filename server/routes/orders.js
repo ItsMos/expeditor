@@ -21,7 +21,7 @@ router.get('/api/orders/:id', auth, admin, async (req, res) => {
 })
 
 router.get('/api/allOrders', auth, admin, async (req, res) => {
-  const [orders] = await db.query(`select * from orders ORDER BY status ASC, created_at`)
+  const [orders] = await db.query(`select * from orders ORDER BY status ASC, created_at DESC`)
   res.json(orders)
 })
 
@@ -62,7 +62,7 @@ router.post('/api/acceptOrder', auth, admin, async (req, res) => {
   const order = orders[0]
   const data = []
   order.inputs.forEach((i, index) => {
-    data.push({ name: order.inputNames[index], value: i })
+    data.push({ name: order.inputNames[index].name, value: i })
   })
 
   const form = new FormData()

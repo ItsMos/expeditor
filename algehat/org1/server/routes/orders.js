@@ -16,7 +16,7 @@ router.get('/api/orders/:id', auth, async (req, res) => {
 })
 
 router.get('/api/allOrders', auth, async (req, res) => {
-  const [orders] = await db.query(`select * from requests ORDER BY status ASC, created_at`)
+  const [orders] = await db.query(`select * from requests ORDER BY status ASC, created_at DESC`)
   res.json(orders)
 })
 

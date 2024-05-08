@@ -1,7 +1,9 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from '@/axios'
+import { useAuthStore } from '@/stores/auth'
 
+const authStore = useAuthStore()
 const services = ref([])
 
 onMounted(async () => {
@@ -33,7 +35,7 @@ onMounted(async () => {
                         <i class="pi pi-clock ml-2"></i>
                         وقت التنفيذ: {{ service.time }}
                     </h6>
-                    <router-link :to="'/new/'+service.id" style="margin-top: auto">
+                    <router-link :to="'/new/'+service.id" style="margin-top: auto" v-if="!authStore?.user?.admin">
                         <Button label="اطلب الآن" class="p-3 w-full mt-auto"></Button>
                     </router-link>
                 </div>

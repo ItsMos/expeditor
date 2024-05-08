@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <Message v-if="order.status === 1" :closable="false" severity="success">الطلب منتهي</Message>
+    <Message v-if="order.status === 1" :closable="false" severity="success">الطلب مكتمل</Message>
     <Message v-if="order.status === 2" :closable="false" severity="error">الطلب مرفوض</Message>
     <div class="field grid">
       <label class="col-12 mb-2 md:col-2 md:mb-0">رقم الطلب</label>
       <div class="col-12 md:col-10">
-        <InputText v-model="order.id" readonly />
+        <InputText v-model="order.external_id" readonly />
       </div>
     </div>
 
@@ -24,9 +24,9 @@
     </div>
 
     <div class="field grid">
-      <label class="col-12 mb-2 md:col-2 md:mb-0">تاريخ الطلب</label>
+      <label class="col-12 mb-2 md:col-2 md:mb-0">وقت الطلب</label>
       <div class="col-12 md:col-10">
-        <InputText :value="new Date(order.created_at).toLocaleDateString()" readonly />
+        <InputText :value="new Date(order.created_at).toLocaleString()" readonly />
       </div>
     </div>
 

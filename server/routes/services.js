@@ -10,7 +10,7 @@ router.post('/api/services', auth, admin, async (req, res) => {
 
   conditions = conditions.filter(c => !!c.trim())
   documents = documents.filter(c => !!c.trim())
-  inputs = inputs.filter(c => !!c.trim())
+  inputs = inputs.filter(c => !!c.name.trim())
 
   const [{insertId: serviceId}] = await db.query("insert into services SET ?", {
     title,

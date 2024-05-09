@@ -15,7 +15,7 @@ router.get('/api/orders', auth, async (req, res) => {
   res.json(orders)
 })
 
-router.get('/api/orders/:id', auth, admin, async (req, res) => {
+router.get('/api/orders/:id', auth, async (req, res) => {
   const [data] = await db.query(`select * from orders where id=?`, [req.params.id])
   res.json(data[0])
 })

@@ -61,8 +61,6 @@ async function submit() {
 function getInputRule(inputInfo) {
   if (inputInfo.type == 'هاتف')
     return { numeric: true, max: 10, min: 7, required: true }
-  if (inputInfo.type == 'نص')
-    return { alpha: true, required: true }
   return { required: true }
 }
 

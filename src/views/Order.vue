@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" v-if="order.id != null">
     <Message v-if="order.status === 0" :closable="false">طلبك قيد المراجعة</Message>
     <Message v-if="order.status === 1" :closable="false">يتم العمل على طلبك</Message>
     <Message v-if="order.status === 2" :closable="false" severity="success">الطلب مكتمل</Message>

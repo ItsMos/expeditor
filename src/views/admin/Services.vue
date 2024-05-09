@@ -213,7 +213,7 @@ const initFilters = () => {
                             <InputGroup v-for="(con, i, x) in service.inputs" :key="i">
                                 <InputText v-model="service.inputs[i].name" />
                                 <InputGroupAddon>
-                                    <Dropdown v-model="service.inputs[i].type" :options="['هاتف', 'تاريخ', 'نص']" placeholder="نوع الحقل" />
+                                    <Dropdown v-model="service.inputs[i].type" :options="['هاتف', 'تاريخ', 'نص', 'رقم']" placeholder="نوع الحقل" />
                                 </InputGroupAddon>
                             </InputGroup>
                             <Button icon="pi pi-plus" @click="service.inputs.push({ name: '', type: '' })" />

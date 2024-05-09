@@ -6,7 +6,7 @@
       <div class="field" v-for="input,index in service.inputs">
         <label :for="input.name">{{ input.name }}</label>
         <Field v-slot="{ field, meta }" :name="input.name" :rules="getInputRule(input)" v-model="form.inputs[index]">
-          <InputText v-bind="field" :invalid="!meta.valid" :id="input" :type="input.type == 'تاريخ' ? 'date' : ''" />
+          <InputText v-bind="field" :invalid="!meta.valid" :id="input.name" :type="getInputType(input)" />
         </Field>
         <ErrorMessage :name="input.name" class="block" />
       </div>
@@ -44,7 +44,6 @@ const form = ref({
 async function submit() {
   if (uploaders.value.length && uploaders.value.some(el => el.files.length !== 1))
   return
-  // if (uploader.value.files.length < props.service.documents.length)
   loading.value = true
 
   const formData = new FormData()
@@ -65,6 +64,16 @@ function getInputRule(inputInfo) {
   if (inputInfo.type == 'نص')
     return { alpha: true, required: true }
   return { required: true }
+}
+
+function getInputType(inputInfo) {
+  if (inputInfo.type === 'تاريخ')
+    return 'date'
+  if (inputInfo.type === 'هاتف')
+    return 'tel'
+  if (inputInfo.type === 'رقم')
+    return 'number'
+  return 'text'
 }
 </script>
 

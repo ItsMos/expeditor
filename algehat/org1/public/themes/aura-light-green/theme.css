@@ -6707,7 +6707,7 @@
     height: 1.5rem;
   }
   .p-confirm-popup .p-confirm-popup-message {
-    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .p-dialog-mask.p-component-overlay {
@@ -6912,7 +6912,7 @@
     font-size: 2rem;
   }
   .p-dialog.p-confirm-dialog .p-confirm-dialog-message:not(:first-child) {
-    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .p-overlaypanel {

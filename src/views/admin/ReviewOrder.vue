@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+    <ConfirmDialog></ConfirmDialog>
     <Message v-if="order.status === 1" :closable="false">تم إرسال الطلب للجهة المناسبة</Message>
     <Message v-if="order.status === 2" :closable="false" severity="success">الطلب مكتمل</Message>
     <Message v-if="order.status === 3" :closable="false" severity="error">الطلب مرفوض</Message>
@@ -62,8 +63,8 @@
     </template>
 
     <div class="flex gap-2">
-      <Button @click="accept" v-if="order.status === 0" label="قبول الطلب"/>
-      <Button @click="deny" v-if="order.status === 0" severity="danger" label="رفض الطلب"/>
+      <Button @click="accept" v-if="order.status === 0" label="إرسال الطلب للجهة"/>
+      <Button @click="deny" v-if="order.status === 0" severity="danger" label="إرسال للتعديل"/>
     </div>
   </div>
 </template>
@@ -72,11 +73,13 @@
 import axios from '@/axios'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useConfirm } from "primevue/useconfirm"
 
 const route = useRoute()
 const order = ref({})
 const service = ref({})
 const user = ref({})
+const confirm = useConfirm()
 
 onMounted(async () => {
   const { data } = await axios.get('orders/' + route.params.id)
@@ -90,6 +93,13 @@ onMounted(async () => {
 async function accept() {
   await axios.post('acceptOrder', { orderId: order.value.id })
   order.value.status = 1
+  confirm.require({
+    message: 'تم إرسال الطلب للجهة المعنية بنجاح',
+    header: 'تم',
+    icon: 'pi pi-check-circle',
+    rejectClass: 'hidden',
+    acceptLabel: 'استمرار',
+  })
 }
 
 async function deny() {

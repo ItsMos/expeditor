@@ -6,12 +6,15 @@ const countryCode = value => /^\d{1,3}$/.test(value) || 'Invalid'
 const localPhone = value => /^\d{6,20}$/.test(value) || 'Invalid number.'
 
 function name(value) {
-  return value.split(' ').length >= 4 || 'الاسم رباعي'
+  return value.split(' ').length >= 4 || 'يجب ادخال الاسم الرباعي'
 }
 
 
 configure({
   generateMessage: context => {
+    if (context.name == 'رقم الهوية') {
+      return 'يجب إدخال 10 أرقام للهوية'
+    }
     return `ادخل ${context.field}`;
   },
 });

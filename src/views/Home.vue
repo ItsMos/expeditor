@@ -14,7 +14,7 @@
       </div>
       <div class="col-12 md:col-6 overflow-hidden">
         <img src="/images/people.jpeg" alt="Image"
-          class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%); max-height: 600px;" />
+          class="md:ml-auto block md:h-full" style="max-height: 600px;" />
       </div>
     </div>
 

@@ -6,47 +6,47 @@
       <div class="field grid">
         <label for="name" class="col-12 mb-2 md:col-2 md:mb-0">الاسم رباعي</label>
         <div class="col-12 md:col-10">
-          <Field v-slot="{ field, meta }" name="name" rules="required|name" v-model="form.name">
+          <Field v-slot="{ field, meta }" name="الاسم" rules="required|name" v-model="form.name">
             <InputText v-bind="field" :invalid="!meta.valid" id="name" type="text" />
           </Field>
-          <ErrorMessage name="name" />
+          <ErrorMessage name="الاسم" />
         </div>
       </div>
 
       <div class="field grid">
         <label for="email" class="col-12 mb-2 md:col-2 md:mb-0">البريد الالكتروني</label>
         <div class="col-12 md:col-10">
-          <Field v-slot="{ field, meta }" name="email" rules="required|email" v-model="form.email">
+          <Field v-slot="{ field, meta }" name="الايميل" rules="required|email" v-model="form.email">
             <InputText v-bind="field" :invalid="!meta.valid" id="email" />
           </Field>
-          <ErrorMessage name="email" />
+          <ErrorMessage name="الايميل" />
         </div>
       </div>
       <div class="field grid">
         <label for="password" class="col-12 mb-2 md:col-2 md:mb-0">كلمة المرور</label>
         <div class="col-12 md:col-10">
-          <Field v-slot="{ field, meta }" name="password" rules="required|min:8" v-model="form.password">
+          <Field v-slot="{ field, meta }" name="كلمة المرور" rules="required|min:8" v-model="form.password">
             <Password v-model="form.password" :invalid="!meta.valid" :feedback="false" id="password" />
           </Field>
-          <ErrorMessage name="password" />
+          <ErrorMessage name="كلمة المرور" />
         </div>
       </div>
       <div class="field grid">
         <label for="password2" class="col-12 mb-2 md:col-2 md:mb-0">تأكيد كلمة المرور</label>
         <div class="col-12 md:col-10">
-          <Field v-slot="{ field, meta }" name="password2" :rules="{ required: true, min: 8, is: form.password }" v-model="form.password2">
+          <Field v-slot="{ field, meta }" name="تأكيد كلمة المرور" :rules="{ required: true, min: 8, is: form.password }" v-model="form.password2">
             <Password v-model="form.password2" :invalid="!meta.valid" :feedback="false" id="password2" />
           </Field>
-          <ErrorMessage name="password2" />
+          <ErrorMessage name="تأكيد كلمة المرور" />
         </div>
       </div>
       <div class="field grid">
         <label for="nationalId" class="col-12 mb-2 md:col-2 md:mb-0">رقم الهوية</label>
         <div class="col-12 md:col-10">
-          <Field v-slot="{ field, meta }" name="nationalId" rules="required|numeric|min:10|max:10" v-model="form.nationalId">
-            <InputText v-bind="field" :invalid="!meta.valid" id="nationalId" type="text" />
+          <Field v-slot="{ field, meta }" name="رقم الهوية" rules="required|numeric|min:10|max:10" v-model="form.nationalId">
+            <InputText v-bind="field" :invalid="!meta.valid" id="nationalId" type="number" />
           </Field>
-          <ErrorMessage name="nationalId" />
+          <ErrorMessage name="رقم الهوية" />
         </div>
       </div>
       <Button :loading="loading" label="تسجيل" type="submit" />

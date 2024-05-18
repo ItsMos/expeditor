@@ -2,7 +2,7 @@
   <div class="card" v-if="order.id != null">
     <Message v-if="order.status === 0" :closable="false">طلبك قيد المراجعة</Message>
     <Message v-if="order.status === 1" :closable="false">يتم العمل على طلبك</Message>
-    <Message v-if="order.status === 2" :closable="false" severity="success">الطلب مكتمل</Message>
+    <Message v-if="order.status === 2" :closable="false" severity="success">تم الموافقة على طلبك</Message>
     <Message v-if="order.status === 3" :closable="false" severity="error">الطلب مرفوض</Message>
     <div class="field grid">
       <label class="col-12 mb-2 md:col-2 md:mb-0">رقم الطلب</label>

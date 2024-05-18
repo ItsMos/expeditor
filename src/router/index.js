@@ -31,21 +31,19 @@ const router = createRouter({
                     path: '/new/:serviceId',
                     name: 'NewRequest',
                     component: () => import('@/views/request/New.vue'),
-                    meta: { requireAuth: true },
-                    children: [
-                        {
-                            path: '/new/:serviceId',
-                            component: () => import('@/views/request/Information.vue')
-                        },
-                        {
-                            path: '/new/:serviceId/payment',
-                            component: () => import('@/views/request/Payment.vue')
-                        },
-                        {
-                            path: '/new/:serviceId/confirm',
-                            component: () => import('@/views/request/Confirm.vue')
-                        },
-                    ]
+                    meta: { requireAuth: true }
+                },
+                {
+                    path: '/new/payment',
+                    name: 'payment',
+                    component: () => import('@/views/request/Payment.vue'),
+                    meta: { requireAuth: true }
+                },
+                {
+                    path: '/new/confirm',
+                    name: 'confirmOrder',
+                    component: () => import('@/views/request/Confirm.vue'),
+                    meta: { requireAuth: true }
                 },
                 {
                     path: '/register',

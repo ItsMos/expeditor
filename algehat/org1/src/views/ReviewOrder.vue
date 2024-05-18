@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+    <ConfirmDialog></ConfirmDialog>
     <Message v-if="order.status === 1" :closable="false" severity="success">الطلب مكتمل</Message>
     <Message v-if="order.status === 2" :closable="false" severity="error">الطلب مرفوض</Message>
     <div class="field grid">
@@ -73,10 +74,12 @@
 import axios from '@/axios'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useConfirm } from "primevue/useconfirm"
 
 const route = useRoute()
 const order = ref({})
 const uploader = ref()
+const confirm = useConfirm()
 
 onMounted(async () => {
   const { data } = await axios.get('orders/' + route.params.id)
@@ -89,6 +92,12 @@ async function accept() {
   form.append('result_file', uploader.value.files[0])
   await axios.post('acceptOrder', form)
   order.value.status = 1
+  confirm.require({
+    message: 'تم إكمال الطلب',
+    icon: 'pi pi-check-circle',
+    rejectClass: 'hidden',
+    acceptLabel: 'استمرار',
+  })
 }
 
 async function deny() {

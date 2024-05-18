@@ -23,7 +23,7 @@
 <Steps class="mb-4" v-model:activeStep="activeStep" :model="stepsRoutes" />
 
 <div class="card p-fluid">
-  <router-view @next="next" :service="service" />
+  <Information @next="next" :service="service"/>
 </div>
 </template>
 
@@ -32,27 +32,31 @@ import { onMounted, ref } from 'vue'
 import router from '@/router'
 import axios from '@/axios'
 import { useToast } from 'primevue/usetoast'
+import Information from './Information.vue'
+import { useOrderStore } from '@/stores/order'
 
 const serviceId = router.currentRoute.value.params.serviceId
 const activeStep = ref(0)
 const service = ref({})
 const toast = useToast()
+const orderStore = useOrderStore()
 
 onMounted(async () => {
   const { data } = await axios.get('services/' + serviceId)
   service.value = data
+  orderStore.service = data
 })
 
 function next(orderId) {
   activeStep.value = 1
-  router.push(`/new/${serviceId}/payment`)
+  orderStore.orderId = orderId
+  router.push('/new/payment')
 
-  setTimeout(() => {
-    service.value.orderId = orderId
-    toast.add({ severity: 'success', summary: 'تم الدفع', life: 3000 })
-    activeStep.value = 2
-    router.push(`/new/${serviceId}/confirm`)
-  }, 10000)
+  // setTimeout(() => {
+  //   toast.add({ severity: 'success', summary: 'تم الدفع', life: 3000 })
+  //   activeStep.value = 2
+  //   router.push(`/new/confirm`)
+  // }, 10000)
 }
 
 const stepsRoutes = ref([
